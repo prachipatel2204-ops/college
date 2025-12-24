@@ -16,12 +16,12 @@ export class Student {
 
     students: any[] = [];
   
-    constructor(private studentService: StudentService ) {}
+    constructor(public studentService: StudentService ) {}
+    
   
     ngOnInit() {
       this.students = this.studentService.getStudents();
     }
-
   goToHome() {
     this.router.navigate(['/dashboard']);
   }

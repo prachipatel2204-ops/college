@@ -1,6 +1,23 @@
-<app-form></app-form>
-<app-table [data]="students"></app-table>
-<br />
+<button (click)="studentService.addStudent()">
+  Add Student
+</button>
+
+<br/>
+
+<!-- Use *ngIf instead of @if -->
+@if (studentService.showForm) {
+  <app-form
+    [data]="studentService.data"
+    (save)="studentService.saveStudent($event)">
+  </app-form>
+}
+
+<app-table
+  [data]="studentService.students"
+  (delete)="studentService.deleteStudent($event)"
+  (edit)="studentService.editStudent($event)">
+</app-table>
+
 <button class="btn btn-secondary" routerLink="/dashboard">
   Back to Dashboard
 </button>

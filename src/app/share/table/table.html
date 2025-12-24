@@ -1,21 +1,25 @@
 <table border="1">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Phone No</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Gender</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let s of data">
-            <td>{{ s.name }}</td>
-            <td>{{ s.phone }}</td>
-            <td>{{ s.email }}</td>
-            <td>{{ s.address }}</td>
-            <td>{{ s.gender }}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone No</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Gender</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of data; let i = index">
+      <td>{{ s.name }}</td>
+      <td>{{ s.phone }}</td>
+      <td>{{ s.email }}</td>
+      <td>{{ s.address }}</td>
+      <td>{{ s.gender }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="edit.emit(i)">Edit</button>
+        <button class="btn btn-danger" (click)="delete.emit(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
 </table>

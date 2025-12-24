@@ -1,6 +1,18 @@
-<app-form></app-form>
-<app-table [data]="teachers"></app-table>
+<button (click)="teacherService.addTeacher()">
+  Add Teacher
+</button>
+
 <br/>
-<button class="btn btn-secondary" (click)="goToHome()">
+
+@if (teacherService.showForm) {
+  <app-form
+    [data]="teacherService.data"
+    (save)="teacherService.saveTeacher($event)">
+  </app-form>
+}
+
+<app-table [data]="teacherService.teachers"></app-table>
+
+<button class="btn btn-secondary" routerLink="/dashboard">
   Back to Dashboard
 </button>

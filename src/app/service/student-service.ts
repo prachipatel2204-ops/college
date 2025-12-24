@@ -1,12 +1,49 @@
 import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
+  showForm = false;
+
   students = [
-    { name: 'Prachi', phone: 9313308187, email: 'prachipatel@gmail.com', address: 'Valsad', gender: 'female' },
-    { name: 'Pal', phone: 9724067226, email: 'pal@gmail.com', address: 'Vapi', gender: 'female' }
+    { name: 'Pinkal', phone: 9724067226, email: 'pinkal@gmail.com', address: 'valsad', gender: 'female' },
+    { name: 'Vinesh', phone: 9879684933, email: 'vinesh@gmail.com', address: 'vapi', gender: 'male' }
   ];
+
+  data = { name: '', phone: 0, email: '', address: '', gender: '' };
+
+  editIndex: number | null = null;
+
+  addStudent() {
+    this.data = { name: '', phone: 0, email: '', address: '', gender: '' };
+    this.editIndex = null;
+    this.showForm = true;
+  }
+
+  saveStudent(studentValue: any) {
+    if (this.editIndex !== null) {
+      // update existing student
+      this.students[this.editIndex] = { ...studentValue };
+    } else {
+      // add new student
+      this.students.push({ ...studentValue });
+    }
+    this.showForm = false;
+    this.editIndex = null;
+    this.data = { name: '', phone: 0, email: '', address: '', gender: '' };
+  }
+
+  deleteStudent(index: number) {
+    this.students.splice(index, 1);
+  }
+
+  editStudent(index: number) {
+    this.editIndex = index;
+    this.data = { ...this.students[index] };
+    this.showForm = true;
+  }
+
   getStudents() {
     return this.students;
   }

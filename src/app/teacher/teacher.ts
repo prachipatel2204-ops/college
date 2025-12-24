@@ -16,8 +16,9 @@ export class Teacher implements OnInit {
   private router = inject(Router);
   teachers: any[] = [];
 
-  constructor(private teacherService: TeacherService) {}
+  constructor(public teacherService: TeacherService) {}
 
+  
   ngOnInit() {
     this.teachers = this.teacherService.getTeachers();
   }

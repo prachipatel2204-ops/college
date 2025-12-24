@@ -1,19 +1,15 @@
-<div>
-    Enter Name: 
-    <input type="text" name="name" [(ngModel)]="data.name"  required>
-     <br/> 
-     Enter Phone: <input type="tel" name="mno" [(ngModel)]="data.mno" required> 
-     <br/> 
-     Enter Email: 
-     <input type="email" name="email" [(ngModel)]="data.email" required> 
-     <br/> 
-     Enter Address: 
-     <textarea name="address" [(ngModel)]="data.address" ></textarea>
-     <br/>
-     Enter Gender: 
-     <input type="radio" name="gender" value="male" required> Male
-     <input type="radio" name="gender" value="female"> Female
-     <br/>
-    <button type="button" (click)="submit()">
+<form>
+  Name: <input [(ngModel)]="data.name" name="name"><br>
+  Phone: <input [(ngModel)]="data.phone" name="phone"><br>
+  Email: <input [(ngModel)]="data.email" name="email"><br>
+  Address: <input [(ngModel)]="data.address" name="address"><br>
+
+  Gender:
+  <input type="radio" value="male" name="gender" [(ngModel)]="data.gender"> Male
+  <input type="radio" value="female" name="gender" [(ngModel)]="data.gender"> Female
+  <br><br>
+
+  <button type="button" (click)="submit()">
     {{ editIndex === null ? 'Save' : 'Update' }}
-</div>
+  </button>
+</form>
