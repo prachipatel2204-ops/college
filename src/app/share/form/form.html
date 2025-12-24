@@ -1,1 +1,19 @@
-<p>form works!</p>
+<div>
+    Enter Name: 
+    <input type="text" name="name" [(ngModel)]="data.name"  required>
+     <br/> 
+     Enter Phone: <input type="tel" name="mno" [(ngModel)]="data.mno" required> 
+     <br/> 
+     Enter Email: 
+     <input type="email" name="email" [(ngModel)]="data.email" required> 
+     <br/> 
+     Enter Address: 
+     <textarea name="address" [(ngModel)]="data.address" ></textarea>
+     <br/>
+     Enter Gender: 
+     <input type="radio" name="gender" value="male" required> Male
+     <input type="radio" name="gender" value="female"> Female
+     <br/>
+    <button type="button" (click)="submit()">
+    {{ editIndex === null ? 'Save' : 'Update' }}
+</div>

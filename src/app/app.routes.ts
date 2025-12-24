@@ -1,11 +1,20 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './dashboard/dashboard';
-import { Teacher } from './teacher/teacher';
-import { Student } from './student/student';
 
 export const routes: Routes = [
-    {path:'dashboard',component:Dashboard},
-    {path:'',redirectTo:'dashboard',pathMatch:'full'},
-    {path:'teacher',component:Teacher},
-    {path:'student',component:Student}
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./dashboard/dashboard.routes').then(m => m.routes)
+  },
+  {
+    path: 'teacher',
+    loadChildren: () =>
+      import('./teacher/teacher.routes').then(m => m.routes)
+  },
+  {
+    path: 'student',
+    loadChildren: () =>
+      import('./student/student.routes').then(m => m.routes)
+  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];

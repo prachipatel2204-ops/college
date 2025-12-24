@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './table.html',
-  styleUrl: './table.css',
+  styleUrls: ['./table.css'],
 })
 export class Table {
-
+  @Input() data: any[] = [];
 }
