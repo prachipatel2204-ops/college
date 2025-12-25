@@ -1,0 +1,14 @@
+table,th,td{
+    border: 1px solid black;
+}
+td.th{
+    border: 1 px solid #dddddd;
+    text-align: center;
+    padding: 8 px;
+}
+tr{
+    background-color: white;
+}
+th{
+    background-color: grey;
+}
