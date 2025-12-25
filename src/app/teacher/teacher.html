@@ -10,8 +10,11 @@
     (save)="teacherService.saveTeacher($event)">
   </app-form>
 }
-
-<app-table [data]="teacherService.teachers"></app-table>
+<app-table
+  [data]="teacherService.teachers"
+  (delete)="teacherService.deleteTeacher($event)"
+  (edit)="teacherService.editTeacher($event)">
+</app-table>
 
 <button class="btn btn-secondary" routerLink="/dashboard">
   Back to Dashboard

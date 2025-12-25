@@ -10,16 +10,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of data; let i = index">
+    @for(s of data;track $index){
+    <tr [routerLink]="s.email">
       <td>{{ s.name }}</td>
       <td>{{ s.phone }}</td>
       <td>{{ s.email }}</td>
       <td>{{ s.address }}</td>
       <td>{{ s.gender }}</td>
       <td>
-        <button class="btn btn-primary" (click)="edit.emit(i)">Edit</button>
-        <button class="btn btn-danger" (click)="delete.emit(i)">Delete</button>
+        <button class="btn btn-primary" (click)="edit.emit($index)">Edit</button>
+        <button class="btn btn-danger" (click)="delete.emit($index)">Delete</button>
       </td>
     </tr>
+  }
   </tbody>
 </table>

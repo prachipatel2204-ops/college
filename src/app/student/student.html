@@ -2,19 +2,15 @@
   Add Student
 </button>
 
-<br/>
+<br />
 
 <!-- Use *ngIf instead of @if -->
 @if (studentService.showForm) {
-  <app-form
-    [data]="studentService.data"
-    (save)="studentService.saveStudent($event)">
-  </app-form>
+<app-form [data]="studentService.data" (save)="studentService.saveStudent($event)">
+</app-form>
 }
 
-<app-table
-  [data]="studentService.students"
-  (delete)="studentService.deleteStudent($event)"
+<app-table [data]="studentService.students" (delete)="studentService.deleteStudent($event)"
   (edit)="studentService.editStudent($event)">
 </app-table>
 

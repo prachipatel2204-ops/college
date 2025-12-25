@@ -1,20 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TeacherService } from '../../service/teacher-service';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './form.html',
-  styleUrls: ['./form.css'],  
+  styleUrls: ['./form.css'],
 })
 export class Form {
 
   @Input() data = {
     name: '',
-    phone: 0,     
+    phone: 0,
     email: '',
     address: '',
     gender: '',
@@ -23,7 +22,7 @@ export class Form {
   @Input() editIndex: number | null = null;
   @Output() save = new EventEmitter<any>();
 
-  constructor(public t: TeacherService) {}
+  //constructor(public t: TeacherService) {}
 
   submit() {
     this.save.emit(this.data);
