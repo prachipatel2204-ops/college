@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { StudentService } from '../service/student-service';
 import { Table } from '../share/table/table';
 import { Form } from '../share/form/form';
+import { person } from '../interface/interface';
 
 @Component({
   selector: 'app-student',
@@ -14,7 +15,7 @@ import { Form } from '../share/form/form';
 export class Student {
   private router = inject(Router);
 
-  students: any[] = [];
+  students: person[] = [];
 
   constructor(public studentService: StudentService) { }
 
@@ -22,7 +23,7 @@ export class Student {
   ngOnInit() {
     this.students = this.studentService.getStudents();
   }
-  savestudent(studentValue: any) {
+  savestudent(studentValue: person) {
     this.studentService.saveStudent(studentValue);
   }
 

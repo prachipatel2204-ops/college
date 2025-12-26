@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Gender, person } from '../interface/interface';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +8,9 @@ export class TeacherService {
 
   showForm = false;
 
-  teachers = [
-    { name: 'Pinkal', phone: 9724067226, email: 'pinkal@gmail.com', address: 'valsad', gender: 'female' },
-    { name: 'Vinesh', phone: 9879684933, email: 'vinesh@gmail.com', address: 'vapi', gender: 'male' }
+   teachers:person[] = [
+    { name: 'Pinkal', phone: 9724067226, email: 'pinkal@gmail.com', address: 'valsad', gender: Gender.Female },
+    { name: 'Vinesh', phone: 9879684933, email: 'vinesh@gmail.com', address: 'vapi', gender: Gender.Male }
   ];
 
   data = { name:'', phone:0, email:'', address:'', gender:'' };
@@ -22,7 +23,7 @@ export class TeacherService {
     this.showForm = true;
   }
 
-  saveTeacher(teacherValue: any) {
+  saveTeacher(teacherValue: person) {
     if (this.editIndex !== null) {
       this.teachers[this.editIndex] = { ...teacherValue };
     } else {
