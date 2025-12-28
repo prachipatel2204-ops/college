@@ -1,19 +1,43 @@
-<button (click)="studentService.addStudent()">
+<button
+  class="btn btn-primary mb-3"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+  (click)="studService.addStudent()">
   Add Student
 </button>
 
-<br />
-
-<!-- Use *ngIf instead of @if -->
-@if (studentService.showForm) {
-<app-form [data]="studentService.data" (save)="studentService.saveStudent($event)">
-</app-form>
-}
-
-<app-table [data]="studentService.students" (delete)="studentService.deleteStudent($event)"
-  (edit)="studentService.editStudent($event)">
+<app-table
+  [data]="students"
+  (edit)="editdata($event)"
+  (delete)="studService.deleteStudent($event)"
+  (view)="viewStudent($event)">
 </app-table>
 
-<button class="btn btn-secondary" routerLink="/dashboard">
-  Back to Dashboard
+<button class="btn btn-secondary mt-3" (click)="gotohome()">
+  Go to Dashboard
 </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ studService.editIndex === null ? 'Add Student' : 'Edit Student' }}
+        </h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        @if (studService.showForm) {
+          <app-form
+            [data]="studService.data"
+            (save)="savestudent($event)">
+          </app-form>
+        }
+      </div>
+
+    </div>
+  </div>
+</div>

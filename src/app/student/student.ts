@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { StudentService } from '../service/student-service';
 import { Table } from '../share/table/table';
 import { Form } from '../share/form/form';
@@ -8,29 +10,34 @@ import { person } from '../interface/interface';
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [RouterModule, Table, Form],
+  imports: [FormsModule, Table, Form],
   templateUrl: './student.html',
   styleUrls: ['./student.css'],
 })
-export class Student {
-  private router = inject(Router);
+export class Student implements OnInit {
 
   students: person[] = [];
+  private router = inject(Router);
 
-  constructor(public studentService: StudentService) { }
+  constructor(public studService: StudentService) {}
 
-
-  ngOnInit() {
-    this.students = this.studentService.getStudents();
+  ngOnInit(): void {
+    this.students = this.studService.getStudents();
   }
-  savestudent(studentValue: person) {
-    this.studentService.saveStudent(studentValue);
+
+  savestudent(data: person) {
+    this.studService.saveStudent(data);
   }
 
   editdata(index: number) {
-    this.studentService.editStudent(index);
+    this.studService.editStudent(index);
   }
-  goToHome() {
-    this.router.navigate(['/dashboard']);
+
+  viewStudent(email: string) {
+    this.router.navigate(['student', email]); // ⭐ IMPORTANT FIX
+  }
+
+  gotohome() {
+    this.router.navigate(['dashboard']);
   }
 }

@@ -2,27 +2,44 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Phone No</th>
+      <th>Phone</th>
       <th>Email</th>
       <th>Address</th>
       <th>Gender</th>
       <th>Action</th>
     </tr>
   </thead>
+
   <tbody>
-    @for(s of data;track $index){
-    <tr [routerLink]="s.email">
-      <td>{{ s.name }}</td>
-      <td>{{ s.phone }}</td>
-      <td>{{ s.email }}</td>
-      <td>{{ s.address }}</td>
-      <td>{{ s.gender }}</td>
-      <td>
-        <button class="btn btn-primary" (click)="edit.emit($index)">Edit</button>
-        <button class="btn btn-danger" (click)="delete.emit($index)">Delete</button>
-        <button >View</button>
-      </td>
-    </tr>
-  }
+    @for (s of data; track $index) {
+      <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.phone }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.address }}</td>
+        <td>{{ s.gender }}</td>
+        <td>
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="edit.emit($index)">
+            Edit
+          </button>
+
+          <button
+            class="btn btn-danger"
+            (click)="delete.emit($index)">
+            Delete
+          </button>
+
+          <button
+            class="btn btn-info"
+            (click)="view.emit(s.email)">
+            View
+          </button>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
